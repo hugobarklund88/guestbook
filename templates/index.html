@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Gästbok</title>
+</head>
+<body>
+
+    <h1>Gästbok</h1>
+
+    <h2>Skriv ett nytt inlägg</h2>
+    <form action="/add" method="POST">
+        <label>Namn:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Meddelande:</label><br>
+        <textarea name="comment" required></textarea><br><br>
+
+        <button type="submit">Skicka</button>
+    </form>
+
+    <hr>
+
+    <h2>Tidigare inlägg</h2>
+    {% for entry in entries %}
+        <div>
+            <strong>{{ entry.name }}</strong> skrev ({{ entry.time }}):
+            <p>{{ entry.comment }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>
